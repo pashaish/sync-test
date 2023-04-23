@@ -13,6 +13,7 @@ export interface Config {
   };
   sync: {
     batch_size: number;
+    salt: string;
   };
 }
 

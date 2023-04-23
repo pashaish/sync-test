@@ -6,6 +6,7 @@ import { MongoDB } from "db/mongodb";
 import { Customer, UnconfirmedCustomer } from "db/types/customer";
 import { Logger } from "logger/logger.interface";
 import { DBCustomersAnonymised } from "./customers_anonymised.interface";
+import { Config } from "config/config.interface";
 
 @injectable()
 export class MongoDBCustomersAnonymised implements DBCustomersAnonymised {
@@ -13,6 +14,7 @@ export class MongoDBCustomersAnonymised implements DBCustomersAnonymised {
 
   constructor(
     @inject(MongoDB) private mongoDB: MongoDB,
+    @inject(Config) private config: Config,
     @inject(Logger) private logger: Logger
   ) {
     this.collection = this.mongoDB.collection("customers_anonymised");
@@ -63,7 +65,7 @@ export class MongoDBCustomersAnonymised implements DBCustomersAnonymised {
   }
 
   private annStr(str: string): string {
-    return crypto.createHash("sha256").update(str).digest("hex").slice(0, 8);
+    return crypto.createHash("sha256").update(str + this.config.sync.salt).digest("hex").slice(0, 8);
   }
 
   private annEmail(email: string): string {

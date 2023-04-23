@@ -9,6 +9,7 @@ export class EnvConfig implements Config {
 
   public sync: Config["sync"] = {
     batch_size: 1000,
+    salt: "",
   };
 
   public logger: Config["logger"] = {
@@ -41,5 +42,6 @@ export class EnvConfig implements Config {
     this.sync.batch_size = Number(
       process.env.SYNC_BATCH_SIZE ?? this.sync.batch_size
     );
+    this.sync.salt = process.env.SYNC_SALT ?? this.sync.salt;
   }
 }
