@@ -6,7 +6,7 @@ import { container } from "tsyringe";
 import { Sync } from "sync/sync";
 import { Logger } from "logger/logger.interface";
 
-void (async function () {
+void async function () {
   await initDependencies();
   const logger: Logger = container.resolve(Logger);
 
@@ -25,4 +25,4 @@ void (async function () {
     await sync.stop();
     process.exit(0);
   });
-})();
+}();
