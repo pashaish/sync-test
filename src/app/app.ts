@@ -9,7 +9,7 @@ export class App {
   constructor(
     @inject(Provider) private provider: Provider,
     @inject(DBCustomers) private dbCustomers: DBCustomers,
-    @inject(Logger) private logger: Logger,
+    @inject(Logger) private logger: Logger
   ) {}
 
   public async run() {

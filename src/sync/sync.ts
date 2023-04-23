@@ -1,5 +1,5 @@
 import { inject, injectable } from "tsyringe";
-import { debounce } from 'lodash';
+import { debounce } from "lodash";
 
 import { DBCustomers } from "db/customers/customers.interface";
 import { DBCustomersAnonymised } from "db/customers_anonymised/customers_anonymised.interface";
@@ -17,8 +17,11 @@ export class Sync {
   private rtSyncStartTime = Date.now();
   private fullReindex = false;
   private lastAnCustomer: Customer | null = null;
-  
-  private debOnInsertCustomer: (customer: Customer, isDeb?: boolean) => Promise<void> | undefined;
+
+  private debOnInsertCustomer: (
+    customer: Customer,
+    isDeb?: boolean
+  ) => Promise<void> | undefined;
 
   constructor(
     @inject(DBCustomers)
@@ -88,7 +91,7 @@ export class Sync {
     this.customers.subscribeUpdates(async (customer) => {
       await this.addCustomers([customer]);
     });
-    
+
     this.rtSyncStartTime = Date.now();
     this.customers.subscribeInserts(this.onInsertCustomer);
   }
@@ -122,7 +125,7 @@ export class Sync {
       }
     );
     this.insertsCount = 0;
-  };
+  }
 
   private async addCustomers(customers: Customer[]) {
     if (this.isStopped) {
