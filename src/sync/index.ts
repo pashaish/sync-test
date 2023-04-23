@@ -15,6 +15,7 @@ void async function () {
   if (process.argv.includes("--full-reindex")) {
     logger.info("Full reindex mode");
     await sync.runFullReindex();
+    process.exit(0);
   } else {
     logger.info("Realtime sync mode");
     await sync.realtimeSync();

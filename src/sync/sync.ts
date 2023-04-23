@@ -49,7 +49,6 @@ export class Sync {
     this.fullReindex = true;
     await this.sync();
     await this.stop();
-    process.exit(0);
   }
 
   public async stop() {
