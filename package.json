@@ -19,14 +19,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev:app": "LOGGER_LEVEL=debug NODE_PATH=./src node -r ts-node/register ./src/app/index.ts",
-    "dev:sync": "LOGGER_LEVEL=debug NODE_PATH=./src node -r ts-node/register ./src/sync/index.ts",
-    "dev:sync-full": "LOGGER_LEVEL=debug NODE_PATH=./src node -r ts-node/register ./src/sync/index.ts --full-reindex",
+    "dev:app": "LOGGER_LEVEL=debug NODE_PATH=./src node -r ts-node/register ./src/bin/app.ts",
+    "dev:sync": "LOGGER_LEVEL=debug NODE_PATH=./src node -r ts-node/register ./src/bin/sync.ts",
+    "dev:sync-full": "LOGGER_LEVEL=debug NODE_PATH=./src node -r ts-node/register ./src/bin/sync.ts --full-reindex",
     "format": "prettier --write ./",
     "build": "tsc",
-    "prod:app": "NODE_PATH=./build node ./build/app/index.js",
-    "prod:sync": "NODE_PATH=./build node ./build/sync/index.js",
-    "prod:sync-full": "NODE_PATH=./build node ./build/sync/index.js --full-reindex"
+    "prod:app": "NODE_PATH=./build node ./build/bin/app.js",
+    "prod:sync": "NODE_PATH=./build node ./build/bin/sync.js",
+    "prod:sync-full": "NODE_PATH=./build node ./build/bin/sync.js --full-reindex"
   },
   "keywords": [],
   "author": "",
